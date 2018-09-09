@@ -1,4 +1,5 @@
 const Koa = require('koa')
+const cors = require('@koa/cors')
 const Router = require('koa-router')
 const bodyParser = require('koa-bodyparser')
 
@@ -11,6 +12,7 @@ const employeeRouter = require('./modules/employee/router')
 const app = new Koa()
 
 app
+  .use(cors())
   .use(bodyParser())
   .use(errorHandler())
   .use(verifyToken())
@@ -31,6 +33,6 @@ app
   .use(apiRouter.routes())
   .use(apiRouter.allowedMethods())
 
-app.listen(3000, () => {
+app.listen(8000, () => {
   console.log('Api running')
 })

@@ -5,6 +5,7 @@
   "main": "server.js",
   "license": "MIT",
   "dependencies": {
+    "@koa/cors": "2",
     "http-status": "^1.2.0",
     "jsonwebtoken": "^8.3.0",
     "koa": "^2.5.2",
