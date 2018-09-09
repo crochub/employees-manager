@@ -4,3 +4,7 @@
 # API part
 /api/node_modules
 /api/yarn-error.log
+
+# WEB part
+/web/node_modules
+/web/yarn_error.log
