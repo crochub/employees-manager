@@ -15,23 +15,22 @@ async function verifyToken (ctx, next) {
   }
 
   try {
-    const token = ctx.request.header['X-Auth-Token']
+    const token = ctx.request.header['x-auth-token']
 
     if (!token) {
       throw new AuthError('Auth token header \'X-Auth-Token\' is missed.', HTTP_STATUS_CODE.UNAUTHORIZED)
     }
 
-    const payload = await authService.verifyToken(token)
-    ctx.request.user = payload
+    ctx.request.user = await authService.verifyToken(token)
 
     await next()
   } catch (err) {
     console.error(err)
 
     if (err instanceof AuthError) {
-      throw err
-    } else {
       throw new AuthError('Auth token is incorrect.', HTTP_STATUS_CODE.UNAUTHORIZED)
+    } else {
+      throw err
     }
   }
 }

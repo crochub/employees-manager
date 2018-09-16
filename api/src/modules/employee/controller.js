@@ -3,7 +3,7 @@ const EmployeeModel = require('./model')
 class EmployeeController {
   create (ownerId, data) { return EmployeeModel.create({ owner_id: ownerId, ...data}) }
 
-  remove (id) { return EmployeeModel.findOneAndDelete(id) }
+  remove (id) { return EmployeeModel.findByIdAndRemove(id) }
 
   update (id, data) { return EmployeeModel.findOneAndUpdate(id, data, { new: true }) }
 

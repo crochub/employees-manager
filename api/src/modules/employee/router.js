@@ -5,7 +5,7 @@ const employeeCtrl = require('./controller')
 const router = new Router({ prefix: '/employee' })
 
 router.post('/', async ctx => {
-  const ownerId = '5b93d3ead113aa772077291f'
+  const { _id: ownerId } = ctx.request.user
   ctx.body = await employeeCtrl.create(ownerId, ctx.request.body)
 })
 
@@ -18,7 +18,7 @@ router.delete('/:id', async ctx => {
 })
 
 router.get('/', async ctx => {
-  const ownerId = '5b93d3ead113aa772077291f'
+  const { _id: ownerId } = ctx.request.user
   const searchValue = ctx.query.search || null
 
   const paginationOptions = {
