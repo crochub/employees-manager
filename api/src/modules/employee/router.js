@@ -17,6 +17,10 @@ router.delete('/:id', async ctx => {
   ctx.body = await employeeCtrl.remove(ctx.params.id)
 })
 
+router.get('/:id', async ctx => {
+  ctx.body = await employeeCtrl.get(ctx.params.id)
+})
+
 router.get('/', async ctx => {
   const { _id: ownerId } = ctx.request.user
   const searchValue = ctx.query.search || null

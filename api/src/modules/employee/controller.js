@@ -7,6 +7,8 @@ class EmployeeController {
 
   update (id, data) { return EmployeeModel.findOneAndUpdate(id, data, { new: true }) }
 
+  get (id) { return EmployeeModel.findById(id)}
+
   getList (ownerId, search, pagerOptions = {}) {
     const { page = 0, limit = 0 } = pagerOptions
     const pager = {
